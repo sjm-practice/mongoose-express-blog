@@ -18,4 +18,10 @@ module.exports = function (app) {
     res.type('txt');
     res.send("Sorry, couldn't find that page.");
   });
+
+  // 500 - internal / system errors
+  app.use(function (err, req, res, next) {
+    console.log('error at %s\n', req.url, err);
+    res.send(500, 'Oops, internal error.');
+  });
 };
