@@ -9,6 +9,7 @@ html
     section.login
       ul
         if session.isLoggedIn
+          p= session.user
           li
             a(href="/logout") Logout
         else
