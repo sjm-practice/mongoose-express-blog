@@ -22,6 +22,6 @@ module.exports = function (app) {
   // 500 - internal / system errors
   app.use(function (err, req, res, next) {
     console.log('error at %s\n', req.url, err);
-    res.send(500, 'Oops, internal error.');
+    res.status(500).send('Oops, internal error.');
   });
 };
