@@ -1,7 +1,8 @@
 'use strict';
 
-var errors = require('./errors.js');
-var login = require('./login.js');
+var errors = require('./errors');
+var login = require('./login');
+var posts = require('./posts');
 
 module.exports = function (app) {
 
@@ -12,6 +13,9 @@ module.exports = function (app) {
 
   // login & logout routes
   login(app);
+
+  // post routes
+  posts(app);
 
   // errors
   errors(app);
