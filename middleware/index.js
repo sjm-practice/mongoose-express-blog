@@ -1,7 +1,11 @@
 'use strict';
 
 var express = require('express');
-var logger = require('./logger');
+
+// note, the lessons use middleware previously provided by express.
+// those are no longer supported via express (perhaps since node 4.0?), and
+// need to be explicitly installed (or use similar packages)
+var logger = require('./logger');   // a simple logger created in a codeschool node course
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
