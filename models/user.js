@@ -13,5 +13,6 @@ var schema = mongoose.Schema({
   // created: { type: Date, default: Date.now, index: true }
 });
 
-// module.exports = mongoose.model('User', schema);
+// Compile the model.
 mongoose.model('User', schema);
+// module.exports = mongoose.model('User', schema);

@@ -30,6 +30,7 @@
     "express-session": "^1.11.3",
     "jade": "^1.11.0",
     "mongoose": "^4.1.7",
+    "mongoose-lifecycle": "^1.0.0",
     "random-string": "^0.1.2"
   }
 }
