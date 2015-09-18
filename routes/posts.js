@@ -45,4 +45,26 @@ module.exports = function (app) {
       res.render('post/view.jade', { post: post });
     });
   });
+
+  //
+  // delete post
+  //
+  app.get('/post/remove/:id', loggedIn, function (req, res, next) {
+    var postId = req.params.id;
+
+    BlogPost.findOne({ _id: postId }, function (err, post) {
+      if (err) return next(err);
+
+      // validate logged in user is author of this post
+      if (post.author != req.session.user) {
+        return res.sendStatus(403);
+      }
+
+      // TODO should display a confirmation message here
+      post.remove(function (err) {
+        if (err) return next(err);
+        res.redirect('/');
+      });
+    });
+  });
 };
