@@ -24,7 +24,6 @@ module.exports = function (app) {
     if (!(email && pass)) {
       return invalid();
     }
-//    email = email.toLowerCase();
 
     // make sure this user doesn't already exist
     User.findById(email, function (err, user) {
