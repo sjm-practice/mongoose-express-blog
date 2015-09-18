@@ -21,6 +21,8 @@ module.exports = function (app) {
     // verify valid email and password provided
     var email = cleanString(req.body.email);
     var pass = cleanString(req.body.pass);
+    var fname = 'John';    // TODO, capture these fields, then save
+    var lname = 'Doe';
     if (!(email && pass)) {
       return invalid();
     }
@@ -38,7 +40,10 @@ module.exports = function (app) {
       crypto.randomBytes(16, function (err, bytes) {
         if (err) return next(err);
 
-        var user = { _id: email };
+        var user = {
+          _id: email,
+          name: { first: fname, last: lname }
+        };
         user.salt = bytes.toString('utf8');
         user.hash = hash(pass, user.salt);
 

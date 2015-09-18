@@ -13,6 +13,11 @@ var schema = mongoose.Schema({
   // created: { type: Date, default: Date.now, index: true }
 });
 
+// properties that do not get saved to the db
+schema.virtual('fullname').get(function () {
+  return this.name.first + ' ' + this.name.last;
+});
+
 // Compile the model.
 mongoose.model('User', schema);
 // module.exports = mongoose.model('User', schema);
