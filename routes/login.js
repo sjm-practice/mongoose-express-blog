@@ -19,12 +19,12 @@ module.exports = function (app) {
   app.post('/signup', function (req, res, next) {
 
     // verify valid email and password provided
-    var email = cleanString(req.params('email'));
-    var pass = cleanString(req.params('pass'));
+    var email = cleanString(req.body.email);
+    var pass = cleanString(req.body.pass);
     if (!(email && pass)) {
       return invalid();
     }
-    email = email.toLowerCase();
+//    email = email.toLowerCase();
 
     // make sure this user doesn't already exist
     User.findById(email, function (err, user) {
@@ -53,8 +53,8 @@ module.exports = function (app) {
 
           // user created, store session info
           req.session.isLoggedIn = true;
-          req.session.user = newUser.email;
-          console.log('created user:', newUser.email);
+          req.session.user = newUser._id;
+          console.log('created user:', newUser._id);
 
           return res.redirect('/');
         });
@@ -75,8 +75,8 @@ module.exports = function (app) {
 
   app.post('/login', function (req, res, next) {
     // validate input
-    var email = cleanString(req.params('email'));
-    var pass = cleanString(req.params('pass'));
+    var email = cleanString(req.body.email);
+    var pass = cleanString(req.body.pass);
     if (!(email && pass)) {
       return invalid();
     }

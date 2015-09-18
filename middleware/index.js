@@ -1,14 +1,14 @@
 'use strict';
 
 var express = require('express');
-var logger = require('express-logger');
+var logger = require('./logger');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var randomString = require('random-string');
 
 module.exports = function (app) {
-  app.use(logger({ path: './logs/express.log' }));
+  app.use(logger);
 
   // simple persistant sessions (better to connect-mongo or similar)
   app.use(cookieParser());
